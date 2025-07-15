@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Tampilan model student-->
+    <record id="view_practicum_student_form" model="ir.ui.view">
+        <field name="name">practicum.student.form</field>
+        <field name="model">practicum.student</field>
+        <field name="arch" type="xml">
+            <form string="Data Mahasiswa">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="student_nim"/>
+                        <field name="student_prodi"/>
+                    </group>
+                    <notebook>
+                        <page string="Riwayat Pendaftaran">
+                            <field name="registration_ids" readonly="1"> <!--read only pada history-->
+                                <list>
+                                    <field name="practicum_id"/>
+                                    <field name="registration_date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_practicum_student_list" model="ir.ui.view">
+        <field name="name">practicum.student.tree</field>
+        <field name="model">practicum.student</field>
+        <field name="arch" type="xml">
+            <list string="Mahasiswa">
+                <field name="name"/>
+                <field name="student_nim"/>
+                <field name="student_prodi"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Tampilan model jadwal praktikum -->
+    <record id="view_practicum_session_form" model="ir.ui.view">
+        <field name="name">practicum.session.form</field>
+        <field name="model">practicum.session</field>
+        <field name="arch" type="xml">
+            <form string="Sesi Praktikum">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="session_code"/>
+                        <field name="supervisor_id"/>
+                        <field name="session_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Peserta Terdaftar">
+                            <field name="participant_ids" readonly="1"> <!--readonly pada id peserta-->
+                                <list>
+                                    <field name="student_id"/>
+                                    <field name="registration_date"/>
+                                    <field name="state"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_practicum_session_list" model="ir.ui.view">
+        <field name="name">practicum.session.list</field>
+        <field name="model">practicum.session</field>
+        <field name="arch" type="xml">
+            <list string="Sesi Praktikum">
+                <field name="name"/>
+                <field name="session_code"/>
+                <field name="session_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Tampilan utk model registration-->
+    <record id="view_practicum_registration_form" model="ir.ui.view">
+        <field name="name">practicum.registration.form</field>
+        <field name="model">practicum.registration</field>
+        <field name="arch" type="xml">
+            <form string="Pendaftaran Praktikum">
+                <header>
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary"/> <!--invisible kalau state != draft, dan seterusnya-->
+                    <button name="action_approve" string="Approve" type="object" class="btn-primary"/>
+                    <button name="action_done" string="Tandai Selesai" type="object" class="btn-primary"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done"/>                
+                </header>
+                <sheet>
+                    <!--relasi many2one oleh studentid ke model student, dan practicumid ke model session (jadwal)-->
+                    <group>
+                        <field name="student_id"/>
+                        <field name="practicum_id"/>
+                        <field name="registration_date"/>
+                    </group>
+                    <notebook>
+                        <page string="Catatan">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_practicum_registration_list" model="ir.ui.view">
+        <field name="name">practicum.registration.list</field>
+        <field name="model">practicum.registration</field>
+        <field name="arch" type="xml">
+            <list string="Pendaftaran Praktikum">
+                <field name="student_id"/>
+                <field name="practicum_id"/>
+                <field name="registration_date"/>
+                <field name="state"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- actionwindows untuk ke 3 model-->
+    <record id="action_practicum_student" model="ir.actions.act_window">
+        <field name="name">Mahasiswa</field>
+        <field name="res_model">practicum.student</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_practicum_session" model="ir.actions.act_window">
+        <field name="name">Sesi Praktikum</field>
+        <field name="res_model">practicum.session</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <record id="action_practicum_registration" model="ir.actions.act_window">
+        <field name="name">Pendaftaran</field>
+        <field name="res_model">practicum.registration</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- menu baru= -->
+    <!--landingpage-->
+    <menuitem id="menu_practicum_root" name="Praktikum" sequence="10"/>
+    <!--registrasi praktikum-->
+    <menuitem id="menu_practicum_registration_list" name="Pendaftaran" parent="menu_practicum_root" action="action_practicum_registration" sequence="10"/>
+    <!--config-->
+    <menuitem id="menu_practicum_master_data" name="Konfigurasi" parent="menu_practicum_root" sequence="100"/>
+    <!--mahasiswa-->
+    <menuitem id="menu_practicum_student_list" name="Mahasiswa" parent="menu_practicum_master_data" action="action_practicum_student" sequence="10"/>
+    <!--jadwal/sesi praktikum-->
+    <menuitem id="menu_practicum_session_list" name="Sesi Praktikum" parent="menu_practicum_master_data" action="action_practicum_session" sequence="20"/>
+
+</odoo>

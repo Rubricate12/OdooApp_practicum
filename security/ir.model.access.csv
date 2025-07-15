@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_practicum_registration_user,practicum.registration.user,model_practicum_registration,base.group_user,1,1,1,1
+access_practicum_student_user,practicum.student.user,model_practicum_student,base.group_user,1,1,1,1
+access_practicum_session_user,practicum.session.user,model_practicum_session,base.group_user,1,1,1,1
