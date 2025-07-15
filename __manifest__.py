@@ -12,7 +12,10 @@
     'depends': ['base'], 
     'data': [
         'security/ir.model.access.csv',
-        'views/practicum_views.xml',
+        'views/practicum_student_views.xml',
+        'views/practicum_session_views.xml',
+        'views/practicum_registration_views.xml',
+        'views/menu_views.xml',
     ],
     'installable': True,
     'application': True,

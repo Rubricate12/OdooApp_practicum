@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- menu baru= -->
+    <!--landingpage-->
+    <menuitem id="menu_practicum_root" name="Praktikum" sequence="10"/>
+    <!--registrasi praktikum-->
+    <menuitem id="menu_practicum_registration_list" name="Pendaftaran" parent="menu_practicum_root" action="action_practicum_registration" sequence="10"/>
+    <!--config-->
+    <menuitem id="menu_practicum_master_data" name="Konfigurasi" parent="menu_practicum_root" sequence="100"/>
+    <!--mahasiswa-->
+    <menuitem id="menu_practicum_student_list" name="Mahasiswa" parent="menu_practicum_master_data" action="action_practicum_student" sequence="10"/>
+    <!--jadwal/sesi praktikum-->
+    <menuitem id="menu_practicum_session_list" name="Sesi Praktikum" parent="menu_practicum_master_data" action="action_practicum_session" sequence="20"/>
+</odoo>
