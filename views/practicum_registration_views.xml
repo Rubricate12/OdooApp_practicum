@@ -33,7 +33,7 @@
         <field name="name">practicum.registration.list</field>
         <field name="model">practicum.registration</field>
         <field name="arch" type="xml">
-            <list string="Pendaftaran Praktikum">
+            <list string="Pendaftaran Praktikum" editable="bottom">
                 <field name="student_id"/>
                 <field name="practicum_id"/>
                 <field name="registration_date"/>
