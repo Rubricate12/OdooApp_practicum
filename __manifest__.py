@@ -12,6 +12,7 @@
     'depends': ['base'], 
     'data': [
         'security/ir.model.access.csv',
+        'security/practicum_security.xml',
         'views/practicum_student_views.xml',
         'views/practicum_session_views.xml',
         'views/practicum_registration_views.xml',

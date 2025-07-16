@@ -7,16 +7,17 @@
         <field name="arch" type="xml">
             <form string="Pendaftaran Praktikum">
                 <header>
-                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="[('state', '!=', 'draft')]"/>
-                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="[('state', '!=', 'submitted')]"/>
-                    <button name="action_done" string="Tandai Selesai" type="object" class="btn-primary" invisible="[('state', '!=', 'approved')]"/>
-                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="[('state', 'not in', ['submitted', 'approved'])]"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done"/>
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="state != 'draft'"/>
+                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="state != 'submitted'" groups="om_praktikum.group_practicum_manager"/>
+                    <button name="action_done" string="Tandai Selesai" type="object" class="btn-primary" invisible="state != 'approved'"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="state not in ('submitted', 'approved')"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done" readonly="1"/>
                 </header>
                 <sheet>
                     <group>
                         <field name="student_id"/>
                         <field name="practicum_id"/>
+                        <field name="state"/>
                     </group>
                     <notebook>
                         <page string="Detail Pendaftaran" name="registration_details">

@@ -9,7 +9,23 @@ class PracticumStudent(models.Model):
     name = fields.Char(string='Nama Mahasiswa', required=True)
     student_nim = fields.Char(string='NIM', required=True)
     student_prodi = fields.Char(string='Prodi')
-    
+    student_sem = fields.Selection([
+        ('1', 'Semester 1'),
+        ('2', 'Semester 2'),
+        ('3', 'Semester 3'),
+        ('4', 'Semester 4'),
+        ('5', 'Semester 5'),
+        ('6', 'Semester 6'),
+        ('7', 'Semester 7'),
+        ('8', 'Semester 8'),
+        ('9', 'Semester 9'),
+        ('10', 'Semester 10')
+        ('11', 'Semester 11')
+        ('12', 'Semester 12')
+        ('13', 'Semester 13')
+        ('14', 'Semester 14')
+    ])
+
     registration_ids = fields.One2many(
         'practicum.registration', 
         'student_id', 
