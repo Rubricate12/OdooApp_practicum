@@ -9,6 +9,29 @@ class PracticumRegistration(models.Model):
     
     registration_date = fields.Date(string='Tanggal Daftar', default=fields.Date.context_today)
     
+    student_nim_related = fields.Char(
+        related='student_id.student_nim', 
+        string="NIM Mahasiswa", 
+    )
+    student_prodi_related = fields.Char(
+        related='student_id.student_prodi', 
+        string="Jurusan Mahasiswa", 
+    )
+    session_code_related = fields.Char(
+        related='practicum_id.session_code',
+        string="Kode Sesi",
+    )
+    supervisor_related = fields.Many2one(
+        'res.partner',
+        related='practicum_id.supervisor_id',
+        string="Supervisor",
+        readonly=True
+    )
+    session_date_related = fields.Datetime(
+        related='practicum_id.session_date',
+        string="Tanggal sesi",
+    )
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('submitted', 'Submitted'),

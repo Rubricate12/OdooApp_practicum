@@ -7,21 +7,33 @@
         <field name="arch" type="xml">
             <form string="Pendaftaran Praktikum">
                 <header>
-                    <button name="action_submit" string="Submit" type="object" class="btn-primary"/> <!--invisible kalau state != draft, dan seterusnya-->
-                    <button name="action_approve" string="Approve" type="object" class="btn-primary"/>
-                    <button name="action_done" string="Tandai Selesai" type="object" class="btn-primary"/>
-                    <button name="action_reset_to_draft" string="Reset to Draft" type="object"/>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done"/>                
+                    <button name="action_submit" string="Submit" type="object" class="btn-primary" invisible="[('state', '!=', 'draft')]"/>
+                    <button name="action_approve" string="Approve" type="object" class="btn-primary" invisible="[('state', '!=', 'submitted')]"/>
+                    <button name="action_done" string="Tandai Selesai" type="object" class="btn-primary" invisible="[('state', '!=', 'approved')]"/>
+                    <button name="action_reset_to_draft" string="Reset to Draft" type="object" invisible="[('state', 'not in', ['submitted', 'approved'])]"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,submitted,approved,done"/>
                 </header>
                 <sheet>
-                    <!--relasi many2one oleh studentid ke model student, dan practicumid ke model session (jadwal)-->
                     <group>
                         <field name="student_id"/>
                         <field name="practicum_id"/>
-                        <field name="registration_date"/>
                     </group>
                     <notebook>
-                        <page string="Catatan">
+                        <page string="Detail Pendaftaran" name="registration_details">
+                           <group>
+                                <field name="registration_date"/>
+                                <field name="student_nim_related" readonly="1"/>
+                                <field name="student_prodi_related" readonly="1"/>
+                           </group>
+                        </page>
+                        <page string="Detail Sesi Praktikum" name="session_details">
+                            <group>
+                                <field name="session_code_related" readonly="1"/>
+                                <field name="supervisor_related" readonly="1"/>
+                                <field name="session_date_related" readonly="1"/>
+                            </group>
+                        </page>
+                        <page string="Catatan" name="notes">
                             <field name="notes"/>
                         </page>
                     </notebook>
@@ -29,6 +41,7 @@
             </form>
         </field>
     </record>
+
     <record id="view_practicum_registration_list" model="ir.ui.view">
         <field name="name">practicum.registration.list</field>
         <field name="model">practicum.registration</field>
@@ -37,7 +50,7 @@
                 <field name="student_id"/>
                 <field name="practicum_id"/>
                 <field name="registration_date"/>
-                <field name="state"/>
+                <field name="state" widget="badge" decoration-success="state == 'done'" decoration-info="state == 'approved'"/>
             </list>
         </field>
     </record>
