@@ -22,15 +22,15 @@
                         <page string="Detail Pendaftaran" name="registration_details">
                            <group>
                                 <field name="registration_date"/>
-                                <field name="student_nim_related" readonly="1"/>
-                                <field name="student_prodi_related" readonly="1"/>
+                                <field name="student_nim_related"/>
+                                <field name="student_prodi_related"/>
                            </group>
                         </page>
                         <page string="Detail Sesi Praktikum" name="session_details">
                             <group>
-                                <field name="session_code_related" readonly="1"/>
-                                <field name="supervisor_related" readonly="1"/>
-                                <field name="session_date_related" readonly="1"/>
+                                <field name="session_code_related"/>
+                                <field name="supervisor_related"/>
+                                <field name="session_date_related"/>
                             </group>
                         </page>
                         <page string="Catatan" name="notes">
@@ -46,7 +46,7 @@
         <field name="name">practicum.registration.list</field>
         <field name="model">practicum.registration</field>
         <field name="arch" type="xml">
-            <list string="Pendaftaran Praktikum" editable="bottom">
+            <list string="Pendaftaran Praktikum">
                 <field name="student_id"/>
                 <field name="practicum_id"/>
                 <field name="registration_date"/>

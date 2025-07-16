@@ -14,11 +14,11 @@
                     </group>
                     <notebook>
                         <page string="Peserta Terdaftar">
-                            <field name="participant_ids" readonly="1"> <!--readonly pada id peserta-->
+                            <field name="participant_ids">
                                 <list>
                                     <field name="student_id"/>
                                     <field name="registration_date"/>
-                                    <field name="state"/>
+                                    <field name="state" readonly="1"/>
                                 </list>
                             </field>
                         </page>

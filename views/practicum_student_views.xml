@@ -12,12 +12,12 @@
                         <field name="student_prodi"/>
                     </group>
                     <notebook>
-                        <page string="Riwayat Pendaftaran">
-                            <field name="registration_ids" readonly="1"> <!--read only pada history-->
+                        <page string="Riwayat Pendaftaran" name="registration_history">
+                            <field name="registration_ids">
                                 <list>
                                     <field name="practicum_id"/>
                                     <field name="registration_date"/>
-                                    <field name="state"/>
+                                    <field name="state" readonly="1"/>
                                 </list>
                             </field>
                         </page>
@@ -27,7 +27,7 @@
         </field>
     </record>
     <record id="view_practicum_student_list" model="ir.ui.view">
-        <field name="name">practicum.student.tree</field>
+        <field name="name">practicum.student.list</field>
         <field name="model">practicum.student</field>
         <field name="arch" type="xml">
             <list string="Mahasiswa">
