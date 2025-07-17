@@ -19,11 +19,11 @@ class PracticumStudent(models.Model):
         ('7', 'Semester 7'),
         ('8', 'Semester 8'),
         ('9', 'Semester 9'),
-        ('10', 'Semester 10')
-        ('11', 'Semester 11')
-        ('12', 'Semester 12')
-        ('13', 'Semester 13')
-        ('14', 'Semester 14')
+        ('10', 'Semester 10'),
+        ('11', 'Semester 11'),
+        ('12', 'Semester 12'),
+        ('13', 'Semester 13'),
+        ('14', 'Semester 14'),
     ])
 
     registration_ids = fields.One2many(

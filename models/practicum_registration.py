@@ -17,6 +17,10 @@ class PracticumRegistration(models.Model):
         related='student_id.student_prodi', 
         string="Jurusan Mahasiswa", 
     )
+    student_sem_related = fields.Selection(
+        related='student_id.student_sem',
+        string="Semester Mahasiswa",
+    )
     session_code_related = fields.Char(
         related='practicum_id.session_code',
         string="Kode Sesi",

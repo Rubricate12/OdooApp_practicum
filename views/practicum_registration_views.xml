@@ -15,6 +15,7 @@
                 </header>
                 <sheet>
                     <group>
+                        <field name="registration_date"/>
                         <field name="student_id"/>
                         <field name="practicum_id"/>
                         <field name="state"/>
@@ -22,9 +23,9 @@
                     <notebook>
                         <page string="Detail Pendaftaran" name="registration_details">
                            <group>
-                                <field name="registration_date"/>
                                 <field name="student_nim_related"/>
                                 <field name="student_prodi_related"/>
+                                <field name="student_sem_related"/>
                            </group>
                         </page>
                         <page string="Detail Sesi Praktikum" name="session_details">

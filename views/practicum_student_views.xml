@@ -10,6 +10,7 @@
                         <field name="name"/>
                         <field name="student_nim"/>
                         <field name="student_prodi"/>
+                        <field name="student_sem"/>
                     </group>
                     <notebook>
                         <page string="Riwayat Pendaftaran" name="registration_history">
@@ -34,6 +35,7 @@
                 <field name="name"/>
                 <field name="student_nim"/>
                 <field name="student_prodi"/>
+                <field name="student_sem"/>
             </list>
         </field>
     </record>
