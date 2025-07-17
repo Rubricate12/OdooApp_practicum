@@ -33,6 +33,7 @@
                                 <field name="session_code_related"/>
                                 <field name="supervisor_related"/>
                                 <field name="session_date_related"/>
+                                <field name="session_tingkat_related"/>
                             </group>
                         </page>
                         <page string="Catatan" name="notes">

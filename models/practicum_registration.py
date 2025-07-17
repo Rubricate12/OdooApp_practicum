@@ -35,6 +35,10 @@ class PracticumRegistration(models.Model):
         related='practicum_id.session_date',
         string="Tanggal sesi",
     )
+    session_tingkat_related = fields.Selection(
+        related='practicum_id.tingkat',
+        string='Tingkat Praktikum'
+    )
 
     state = fields.Selection([
         ('draft', 'Draft'),
