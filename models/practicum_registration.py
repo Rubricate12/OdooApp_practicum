@@ -9,6 +9,7 @@ class PracticumRegistration(models.Model):
     
     registration_date = fields.Date(string='Tanggal Daftar', default=fields.Date.context_today)
     
+    #related utk datastudent
     student_nim_related = fields.Char(
         related='student_id.student_nim', 
         string="NIM Mahasiswa", 
@@ -17,10 +18,15 @@ class PracticumRegistration(models.Model):
         related='student_id.student_prodi', 
         string="Jurusan Mahasiswa", 
     )
-    student_sem_related = fields.Selection(
-        related='student_id.student_sem',
-        string="Semester Mahasiswa",
+    student_tingkat_related = fields.Selection(
+        related='student_id.tingkat',
+        string="Tingkat Mahasiswa"
     )
+    student_sem_related = fields.Selection(
+        related='student_id.semester',
+        string="Semester Mahasiswa"
+    )
+    #related utk data session
     session_code_related = fields.Char(
         related='practicum_id.session_code',
         string="Kode Sesi",
@@ -31,10 +37,15 @@ class PracticumRegistration(models.Model):
         string="Supervisor",
         readonly=True
     )
-    session_date_related = fields.Datetime(
-        related='practicum_id.session_date',
-        string="Tanggal sesi",
+    session_hari_related = fields.Selection(
+        related='practicum_id.hari',
+        string="Hari"
     )
+    session_waktu_related = fields.Float(
+        related='practicum_id.waktu',
+        string="Waktu"
+    )
+    
     session_tingkat_related = fields.Selection(
         related='practicum_id.tingkat',
         string='Tingkat Praktikum'

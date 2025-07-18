@@ -10,7 +10,9 @@
                         <field name="name"/>
                         <field name="session_code"/>
                         <field name="supervisor_id"/>
-                        <field name="session_date"/>
+                        <field name="hari"/>
+                        <field name="waktu" widget="float_time"/>
+                        <field name="tingkat"/>
                     </group>
                     <notebook>
                         <page string="Peserta Terdaftar">
@@ -34,7 +36,9 @@
             <list string="Sesi Praktikum">
                 <field name="name"/>
                 <field name="session_code"/>
-                <field name="session_date"/>
+                <!-- <field name="hari"/>
+                <field name="waktu" widget="float_time"/> -->
+                <field name="tingkat"/>
             </list>
         </field>
     </record>

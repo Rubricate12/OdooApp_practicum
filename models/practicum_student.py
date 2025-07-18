@@ -9,22 +9,19 @@ class PracticumStudent(models.Model):
     name = fields.Char(string='Nama Mahasiswa', required=True)
     student_nim = fields.Char(string='NIM', required=True)
     student_prodi = fields.Char(string='Prodi')
-    student_sem = fields.Selection([
-        ('1', 'Semester 1'),
-        ('2', 'Semester 2'),
-        ('3', 'Semester 3'),
-        ('4', 'Semester 4'),
-        ('5', 'Semester 5'),
-        ('6', 'Semester 6'),
-        ('7', 'Semester 7'),
-        ('8', 'Semester 8'),
-        ('9', 'Semester 9'),
-        ('10', 'Semester 10'),
-        ('11', 'Semester 11'),
-        ('12', 'Semester 12'),
-        ('13', 'Semester 13'),
-        ('14', 'Semester 14'),
-    ])
+    semester = fields.Selection([
+        ('1', '1'), ('2', '2'), ('3', '3'), ('4', '4'),
+        ('5', '5'), ('6', '6'), ('7', '7'), ('8', '8'),
+        ('9', '9'), ('10', '10'), ('11', '11'), ('12', '12'),
+        ('13', '13'), ('14', '14'),
+    ], string="Semester", required=True, default='1')
+
+    tingkat = fields.Selection([
+        ('1', 'Tingkat 1'),
+        ('2', 'Tingkat 2'),
+        ('3', 'Tingkat 3'),
+        ('4', 'Tingkat 4'),
+    ], string="Tingkat", compute='_compute_tingkat', store=True)
 
     registration_ids = fields.One2many(
         'practicum.registration', 
@@ -39,3 +36,17 @@ class PracticumStudent(models.Model):
     def _compute_display_name(self):
         for record in self:
             record.display_name = f"{record.name} ({record.student_nim})"
+
+    @api.depends('semester')
+    def _compute_tingkat(self):
+        for record in self:
+            if record.semester in ['1', '2']:
+                record.tingkat = '1'
+            elif record.semester in ['3', '4']:
+                record.tingkat = '2'
+            elif record.semester in ['5', '6']:
+                record.tingkat = '3'
+            elif record.semester:
+                record.tingkat = '4'
+            else:
+                record.tingkat = False
