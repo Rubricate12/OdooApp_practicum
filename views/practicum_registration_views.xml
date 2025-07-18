@@ -18,9 +18,8 @@
                         <field name="registration_date"/>
                         <field name="student_id"/>
                         <field name="practicum_id"
-                            domain="[('tingkat', '<=', student_tingkat_related)]"
+                            domain="[('tingkat', '&lt;=', student_tingkat_related)]"
                         />
-                        <field name="state"/>
                     </group>
                     <notebook>
                         <page string="Detail Pendaftaran" name="registration_details">
