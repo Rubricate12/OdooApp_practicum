@@ -18,7 +18,17 @@ class PracticumSession(models.Model):
             ('6', 'Minggu'),
     ], string="Hari", required=True,default='0')
 
-    waktu = fields.Float(string="Waktu", required=True)    
+    waktu = fields.Selection([
+        ('0', '06.30 - 08.30'),
+        ('1', '07.30 - 09.30'),
+        ('2', '08.30 - 10.30'),
+        ('3', '09.30 - 11.30'),
+        ('4', '12.30 - 14.30'),
+        ('5', '13.30 - 15.30'),
+        ('6', '14.30 - 16.30'),
+        ('7', '15.30 - 17.30'),
+    ], string="Waktu", required=True)   
+
     tingkat = fields.Selection([
         ('1', 'Tingkat 1'),
         ('2', 'Tingkat 2'),

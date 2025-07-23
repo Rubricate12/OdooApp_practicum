@@ -9,7 +9,7 @@
     'author': 'Arnoldus Bryan H',
     'website': 'https://www.contohwebsite.com',
     'category': 'Education',
-    'depends': ['base'], 
+    'depends': ['base','website'], 
     'data': [
         'security/ir.model.access.csv',
         'security/practicum_security.xml',
@@ -17,6 +17,7 @@
         'views/practicum_session_views.xml',
         'views/practicum_registration_views.xml',
         'views/menu_views.xml',
+        'views/practicum_templates.xml'
     ],
     'installable': True,
     'application': True,

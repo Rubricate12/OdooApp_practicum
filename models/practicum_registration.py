@@ -41,7 +41,7 @@ class PracticumRegistration(models.Model):
         related='practicum_id.hari',
         string="Hari"
     )
-    session_waktu_related = fields.Float(
+    session_waktu_related = fields.Selection(
         related='practicum_id.waktu',
         string="Waktu"
     )
