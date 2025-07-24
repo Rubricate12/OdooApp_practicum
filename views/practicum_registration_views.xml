@@ -42,6 +42,11 @@
                         <page string="Catatan" name="notes">
                             <field name="notes"/>
                         </page>
+                        <page string="Lampiran Berkas" name="attachment_tab">
+                            <group>
+                                <field name="attachment" filename="attachment_filename" widget="binary"/>
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>

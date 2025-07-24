@@ -9,6 +9,9 @@ class PracticumRegistration(models.Model):
     
     registration_date = fields.Date(string='Tanggal Daftar', default=fields.Date.context_today)
     
+    attachment = fields.Binary(string="Berkas Lampiran")
+    attachment_filename = fields.Char(string="Nama File")
+
     #related utk datastudent
     student_nim_related = fields.Char(
         related='student_id.student_nim', 
